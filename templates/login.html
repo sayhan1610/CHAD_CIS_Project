@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chad Login</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome to Chad</h1>
+        <form class="login-form" id="email-form">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            <button type="button" id="send-otp">Send OTP</button>
+        </form>
+
+        <form class="login-form" id="otp-form" style="display:none;">
+            <label for="otp">One-Time Password (OTP)</label>
+            <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+            <button type="submit">Login</button>
+        </form>
+        <p class="note">*This is a temporary mockup for demo purposes.</p>
+        <script>
+            document.getElementById('send-otp').addEventListener('click', function() {
+                // simulate sending OTP and reveal OTP field
+                document.getElementById('otp-form').style.display = 'block';
+                this.disabled = true;
+            });
+        </script>
+    </div>
+</body>
+</html>

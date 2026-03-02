@@ -1,10 +1,14 @@
-# Chad - A Volatile Web-Based Messaging Application
+# Chad – A Volatile Web-Based Messaging Application
 
 ## Overview
 
-Chad is a web-based volatile messaging application built using Flask and real-time communication technologies. The primary purpose of the application is to provide temporary, session-based communication where messages are not permanently stored. Users log in using a one-time password (OTP) system and can join chat rooms to send and receive messages in real time.
+Chad is a web-based volatile messaging application built using Flask and real-time communication technologies. The primary purpose of the application is to provide temporary, session-based communication where messages are not permanently stored.
 
-Unlike traditional messaging platforms, Chad is designed around volatility and privacy. Once a user disconnects or logs out, their local message data is cleared. The application is intended to simulate lightweight, walkie-talkie-style communication that prioritizes immediacy over permanence.
+Users authenticate using a one-time password (OTP) system and can join chat rooms to send and receive messages in real time.
+
+The system is designed around volatility and privacy. Messages are cleared when users disconnect, and the server memory is periodically reset based on a scheduled wipe cycle. This design simulates lightweight, walkie-talkie-style communication that prioritizes immediacy over permanence.
+
+The application can be deployed on cloud container platforms for public access, while development and testing may also be performed on lightweight hardware such as a Raspberry Pi Zero 2 W.
 
 ---
 
@@ -13,44 +17,37 @@ Unlike traditional messaging platforms, Chad is designed around volatility and p
 Chad allows users to:
 
 * Log in using OTP-based authentication
-* Join public or private chat rooms
+* Join chat rooms
 * Send and receive real-time messages
 * View currently online users
 * Experience temporary communication where messages are not persistently stored
 
-Real-time functionality will be implemented using Flask-SocketIO to allow instant message broadcasting between connected users.
+Real-time messaging is implemented using Flask-SocketIO to enable instant broadcasting of messages between connected clients.
 
-The system is intentionally designed to avoid long-term message storage. Messages will only exist during active sessions, making the application fundamentally volatile.
+The system is intentionally designed to avoid long-term message storage. Messages exist only during active sessions, reinforcing the volatile communication model.
 
 ---
 
 ## Why Is It Worth Doing?
 
-This project is worth doing because it integrates multiple foundational web development concepts into one cohesive application. It requires:
+This project integrates several foundational web development concepts into a single application, including authentication systems, routing, template rendering, session management, and real-time communication.
 
-* Authentication systems (OTP-based login)
-* Database design and management
-* Real-time communication
-* Routing and templating
-* Session management
-* Deployment to a live domain
+Building Chad provides practical experience in designing systems that resemble modern messaging platforms while exploring privacy-oriented communication models. Unlike conventional messaging applications, Chad emphasizes ephemeral data handling and presence-based interaction.
 
-By building Chad, I will gain practical experience designing and implementing systems similar to modern messaging platforms. However, unlike traditional chat applications, this project explores privacy-focused communication and ephemeral data handling.
-
-The volatility constraint introduces an additional design challenge, requiring careful consideration of how sessions, sockets, and temporary storage are handled. This makes the project both technically engaging and conceptually meaningful.
+The volatility constraint introduces additional design challenges, requiring careful handling of session memory, socket connections, and scheduled server resets. This makes the project both technically meaningful and academically relevant.
 
 ---
 
 ## Target Audience
 
-The target audience includes users who prefer privacy-focused, temporary communication. This could include:
+The application is designed for users who prefer privacy-focused, temporary communication systems. Potential users include:
 
 * Individuals who do not want message history stored
-* Users looking for lightweight, fast chat rooms
+* Users looking for lightweight real-time chat platforms
 * People who prefer walkie-talkie-style interaction
-* Privacy-conscious users who want minimal data retention
+* Privacy-conscious users seeking minimal data retention
 
-While the application is primarily academic, it demonstrates how ephemeral communication systems can be implemented in practice.
+Although primarily an academic project, the application demonstrates practical implementation of ephemeral messaging systems.
 
 ---
 
@@ -58,9 +55,9 @@ While the application is primarily academic, it demonstrates how ephemeral commu
 
 The defining feature of Chad is its volatility.
 
-Unlike most messaging platforms, messages are not permanently saved. The system prioritizes real-time interaction over archival storage. Once users disconnect, their messages are cleared from their session.
+Unlike traditional messaging platforms, messages are not permanently saved. The system prioritizes real-time communication over archival storage. Once users disconnect, their messages are cleared from active memory.
 
-This design decision shifts the application away from being a social archive and toward being a live communication tool. The focus is on presence, immediacy, and privacy.
+Additionally, the system is designed to periodically reset server memory to maintain privacy and reinforce the temporary nature of communication.
 
 ---
 
@@ -69,13 +66,11 @@ This design decision shifts the application away from being a social archive and
 Primary technologies include:
 
 * Flask (web framework)
-* Flask-SocketIO (real-time communication)
-* MongoDB (database management)
-* OTP authentication system
-* HTML, CSS, and JavaScript for front-end interaction
-* Deployment to a custom domain (e.g., chad.sayhan.app)
-
-If required, an email server or third-party email API may be used to deliver OTP codes securely.
+* Flask-SocketIO for real-time communication
+* OTP-based authentication system
+* HTML, CSS, and JavaScript for frontend interaction
+* Email-based OTP delivery through backend API integration
+* Deployment to a cloud hosting platform such as Render or similar container-based services
 
 ---
 
@@ -84,16 +79,16 @@ If required, an email server or third-party email API may be used to deliver OTP
 Development will follow a staged approach:
 
 1. Build foundational Flask project structure
-2. Implement basic input/output routes
-3. Establish database connectivity
-4. Add OTP-based authentication
-5. Create chat room functionality
-6. Implement real-time messaging
-7. Add online user tracking
-8. Refine volatility logic (session-based message clearing)
-9. Deploy to live domain
+2. Implement basic input and output routing
+3. Establish backend authentication logic
+4. Implement OTP-based login verification
+5. Develop chat room functionality
+6. Add real-time messaging using WebSocket communication
+7. Track online users within active sessions
+8. Implement volatility mechanisms for message clearing
+9. Deploy the application to a public domain
 
-This incremental approach ensures stability at each step before adding complexity.
+This incremental strategy ensures stability before introducing more advanced features.
 
 ---
 
@@ -101,13 +96,13 @@ This incremental approach ensures stability at each step before adding complexit
 
 To manage development effectively, I will:
 
-* Break features into weekly milestones
-* Use modular file organization within Flask
-* Develop and test components incrementally
-* Separate concerns (authentication, messaging, UI, database)
-* Use version control to track changes and prevent regression
+* Divide development into weekly milestones
+* Use modular project architecture
+* Develop and test features incrementally
+* Maintain separation between authentication, messaging, and UI components
+* Utilize version control for tracking changes and preventing regression
 
-I will prioritize building a functional minimum viable product before adding advanced features.
+The primary objective is to complete a functional minimum viable product before adding optional enhancements.
 
 ---
 
@@ -115,12 +110,12 @@ I will prioritize building a functional minimum viable product before adding adv
 
 If technical challenges arise, I will:
 
-* Review official documentation for Flask and related tools
-* Debug incrementally to isolate issues
-* Consult class materials and instructor guidance
+* Consult official Flask and SocketIO documentation
+* Debug components incrementally to isolate errors
+* Seek guidance from course materials and instructor feedback
 * Use reliable web development resources for clarification
-* Test features individually before integration
+* Test each feature independently before integration
 
-By approaching troubleshooting systematically and seeking guidance when necessary, I will maintain steady progress throughout the semester.
+This systematic approach will help ensure steady progress throughout the project.
 
 
